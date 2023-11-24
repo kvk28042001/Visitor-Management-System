@@ -1,0 +1,127 @@
+ <!-- Main -->
+ <main class="main-container">
+    <div class="main-title">
+    <h2 style="color: rgb(84, 82, 82);"> DASHBOARD </h2>
+    </div>
+    <div class="main-cards">
+      <div class="card">
+        <div class="card-inner" (click)="openDialog()">
+          <h4>REGISTERED <br> VISITORS</h4>
+          <span class="material-icons-outlined">groups</span>
+        </div>
+        <h2>{{appointmentcount}}</h2>
+      </div>
+      <div class="card">
+        <div class="card-inner" (click)="openDialog1()">
+            <h4>CHECKED-IN <br> VISITORS</h4>
+            <span class="material-icons-outlined">badge</span>
+        </div>
+        <h2>{{checkInRegisteredCount}}</h2>
+      </div>
+      <div class="card">
+        <div class="card-inner" (click)="openDialog3()">
+          <h4>YET TO VISIT</h4>
+          <span class="material-icons-outlined">help_center</span>
+        </div>
+        <h2>{{yetToVisitCount | json}}</h2>
+      </div>
+      <div class="card">
+        <div class="card-inner" (click)="openDialog2()">
+          <h4>CHECKED-OUT <br> VISITORS</h4>
+          <span class="material-icons-outlined">logout</span>
+        </div>
+        <h2>{{checkOutRegisteredCount}}</h2>
+      </div>
+    </div>
+    
+    <br>
+    <H2 style="color: cornflowerblue;">TODAY's VISITORS : </H2>
+    <div class="container">
+      <app-profile></app-profile>
+    </div>
+    <br>
+    <!-- <label for="yearSelect" style="color: black;">Select Year:</label>
+    <select id="yearSelect" [(ngModel)]="year" (change)="getAppointmentCountInMonth(year)">
+      <option *ngFor="let year of years" [value]="year" (change)="getAppointmentCountInMonth(year)">{{ year }}</option>
+    </select> -->
+    <label for="year">Select Year:</label>
+    <select id="year" class="form-Group" #selectYear>
+      <option value="{{year}}" *ngFor="let year of years">{{year}}</option>
+    </select>
+    &nbsp;
+    <button class="btn btn-primary" (click)="getAppointmentCountInMonth(selectYear.value)">Select Year</button>
+    <br>
+    <br>
+
+    <div class="charts">
+      <div class="charts-card">
+        <h2 class="chart-title">MONTHLY VISITORS</h2>
+        <chart [type]="type" [data]="dataa" [options]="options"></chart>
+      </div>
+      <div class="charts-card">
+        <h2 class="chart-title">YEARLY VISITORS</h2>
+        <chart [type]="type2" [data]="dataabeta" [options]="options2"></chart>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="color: black;">Host Approval Details</h3>
+      <div style="display: flex;"> 
+        <h6 style="color: black;">Approved ? No / Yes :</h6> &nbsp;&nbsp;
+        <mat-slide-toggle [(ngModel)]="status" ngModel name="status" (keyUp)="(onToggleChange())" ></mat-slide-toggle>
+      </div>
+      
+      
+      <br>
+      <table *ngIf="status">
+        <thead>
+          <tr>
+            <th>Sl.No</th>
+            <th>Host</th>
+            <th>Appointment Start Date</th>
+            <th>Appointment End Date</th>
+            <th>Appointment Type</th>
+            <th>Company Name</th>
+            <th>Company Place</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let a of notApprovedAppointments">
+            <td>{{ a.appointment.appointment_id }}</td>
+            <td>{{ a.employee.employeeName }} </td>
+            <td>{{ a.appointment.appointment_start }}</td>
+            <td>{{ a.appointment.appointment_end }}</td>
+            <td>{{ a.appointment.appointment_type.appointmentType }}</td>
+            <td>{{ a.appointment.companyName }}</td>
+            <td>{{ a.appointment.place }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table *ngIf="!status">
+        <thead>
+          <tr>
+            <th>Sl.No</th>
+            <th>Host</th>
+            <th>Appointment Start Date</th>
+            <th>Appointment End Date</th>
+            <th>Appointment Type</th>
+            <th>Company Name</th>
+            <th>Company Place</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let a of approvedAppointments">
+            <td>{{ a.appointment.appointment_id }}</td>
+            <td>{{ a.employee.employeeName }} </td>
+            <td>{{ a.appointment.appointment_start }}</td>
+            <td>{{ a.appointment.appointment_end }}</td>
+            <td>{{ a.appointment.appointment_type.appointmentType }}</td>
+            <td>{{ a.appointment.companyName }}</td>
+            <td>{{ a.appointment.place }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <!-- End Main -->

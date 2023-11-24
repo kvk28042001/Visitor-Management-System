@@ -1,0 +1,190 @@
+.Submit:hover {
+    background: orange;
+    color: #fff;
+    border-radius: 20px;
+    box-shadow:  0 0 5px orange;
+  }
+  .Submit{
+    background-color: orange;
+    color: white;
+    padding: 10px 16px;
+    
+    border: none;
+    cursor: pointer;
+    margin-top: 30px;
+    width: 130px;
+    font-size: 1.0rem;
+    border-radius: 20px;
+  }
+  
+  .head-section {
+    width: 116.2%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 15px;
+    color: #fff;
+    padding-top: 5px;
+    margin-left: -8.2%;
+    background-color: #1fadc4;
+    border-radius: 7px;
+    margin-top: -16%;
+    
+  }
+  
+  .head-section i{
+    font-size: 23px;
+    font-weight: 50;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .alert{
+   height: 40px;
+    
+    
+  }
+  
+  
+  body {
+    font-family: Avenir Next, Avenir, SegoeUI, sans-serif;
+  }
+  
+  
+  form {
+    margin: 2em 0;
+  }
+  /**
+  * Make the field a flex-container, reverse the order so label is on top.
+  */
+   
+  .field {
+    display: flex;
+    justify-content: center;
+    flex-flow: column-reverse;
+    margin-bottom: 1em;
+  }
+  /**
+  * Add a transition to the label and input.
+  * I'm not even sure that touch-action: manipulation works on
+  * inputs, but hey, it's new and cool and could remove the 
+  * pesky delay.
+  */
+  label, input {
+    transition: all 0.2s;
+    touch-action: manipulation;
+    font-size:x-small;
+  }
+  
+  input {
+    font-size: 1.4em;
+    background: #f0f7f7;
+    border: 0;
+    border-bottom: 1px solid #bbb8b8;
+    border-radius: 0;
+    padding: 0;
+    cursor: text;
+  }
+  
+  input:focus {
+    outline: 0;
+    border-bottom: 1px solid #666;
+  }
+  
+  label {
+   
+    letter-spacing: 0.05em;
+  }
+  /**
+  * Translate down and scale the label up to cover the placeholder,
+  * when following an input (with placeholder-shown support).
+  * Also make sure the label is only on one row, at max 2/3rds of the
+  * field—to make sure it scales properly and doesn't wrap.
+  */
+  input:placeholder-shown + label {
+    cursor: text;
+    max-width: 66.66%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transform-origin: left bottom;
+    transform: translate(0, 2.125rem) scale(1.5);
+  }
+  /**
+  * By default, the placeholder should be transparent. Also, it should 
+  * inherit the transition.
+  */
+  ::-webkit-input-placeholder {
+    opacity: 0;
+    transition: inherit;
+  }
+  /**
+  * Show the placeholder when the input is focused.
+  */
+  input:focus::-webkit-input-placeholder {
+    opacity: 1;
+  }
+  /**
+  * When the element is focused, remove the label transform.
+  * Also, do this when the placeholder is not shown, i.e. when 
+  * there's something in the input at all.
+  */
+  input:not(:placeholder-shown) + label,
+  input:focus + label {
+    transform: translate(0, 0) scale(1);
+    cursor:progress;
+  }
+  
+  .user1-box {
+    width: 500px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.7); 
+    box-sizing: border-box;
+    box-shadow: 0 5px 25px 5px #97e7f4;
+    border-radius: 10px;
+  }
+  
+  
+  
+  
+  select{
+    top: 100%;
+    left: 200%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: linear-gradient(#d6e7ea, #d6e7ea);
+    border: none;
+    border-radius: 5px;
+    font-family: "Roboto", sans-serif;
+    color: rgb(65, 59, 59);
+    height: 2rem;
+    font-size: 1rem;
+    padding-left: 6px;
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  select::-ms-expand{
+    display: none;
+  }
+  select:hover{
+    border: 2px solid #6cdceb;
+  }
+  select option{
+    background: linear-gradient(#d6e7ea, #d6e7ea);
+    padding: 7px;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+  .selected{
+    display: none;
+  }
+  
+  
+  @media (max-width: 600px) {
+    .user1-box{
+      width: 80%;
+    }
+  }

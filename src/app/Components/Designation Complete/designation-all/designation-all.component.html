@@ -1,0 +1,20 @@
+<div class="row main-container">
+  <div class="container">
+    <h3>Designation</h3>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Add Designation">
+      <a routerLink="/designationform">
+        <i class="fa fa-plus-square" aria-hidden="true"></i>
+      </a>
+    </button> 
+  </div>
+  <ag-grid-angular
+    class="ag-theme-alpine grid-container"
+    [rowData]="rowData$ | async"
+    [columnDefs]="colDefs"
+    [rowSelection]="'multiple'"
+    [animateRows]="true"
+  ></ag-grid-angular>
+</div>
+
+
+

@@ -1,0 +1,27 @@
+<div class="container mb-5">
+    <h3>Employee Report</h3>
+    <div class="table-container">
+        <table class="special-table">
+            <thead>
+                <tr>
+                    <th>Employee Id</th>
+                    <th>Employee Name</th>
+                    <th>Entity</th>
+                    <th>Department</th>
+                    <th>Section</th>
+                    <th>Designation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let e of employees">
+                    <td>{{e.employeeId }}</td>
+                    <td>{{e.employeeName}}</td>
+                    <td>{{e.entities}}</td>
+                    <td>{{e.departments}}</td>
+                    <td>{{e.sections}}</td>
+                    <td>{{e.designations}}</td>
+                 </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+
+<h1 style="text-align: center;position: sticky;">Registered Visitors</h1>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Place</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let item of appointmentList; let firstRow = first">
+          <tr *ngFor="let visitor of item.visitors; let lastRow = last">
+            <td>{{ visitor.visitor_name }}</td>
+            <td>{{ visitor.visitor_phone1 }}</td>
+            <td *ngIf="firstRow">{{ item.place }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+ 

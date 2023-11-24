@@ -1,0 +1,84 @@
+div {
+    margin: 20px;
+  }
+  
+  /* Styling for the form section */
+  div > div {
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for the form labels and buttons */
+  label, select, button {
+    margin-right: 10px;
+  }
+
+  .appointment-box {
+    border: 1px solid #ccc; /* Border style */
+    padding: 10px; /* Adjust padding for spacing */
+    margin-bottom: 10px; /* Adjust margin for spacing between boxes */
+  }
+  
+  /* Styling for the tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* Styling for table headers */
+  th {
+    background-color: rgb(128, 182, 218);
+    color: white;
+    padding: 15px;
+    text-align: left;
+  }
+  
+  /* Styling for table cells */
+  td {
+    padding: 15px;
+    border-bottom: 1px solid #ecf0f1;
+  }
+  
+  /* Styling for the nested tables */
+  div > div > div table {
+    margin-top: 10px;
+  }
+  
+  /* Styling for nested table headers */
+  div > div > div table th {
+    background-color: #6bced7;
+    color: white;
+  }
+  
+  /* Styling for odd rows in tables */
+  tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Add space between appointments */
+  div > div > div {
+    margin-bottom: 30px;
+  }
+  
+  /* Responsive styling for tables */
+  @media (max-width: 600px) {
+    table, th, td {
+      display: block;
+    }
+  
+    th, td {
+      text-align: center;
+    }
+  
+    th, td {
+      border: none;
+    }
+  
+    /* Add space between table rows */
+    tr {
+      margin-bottom: 20px;
+    }
+  }

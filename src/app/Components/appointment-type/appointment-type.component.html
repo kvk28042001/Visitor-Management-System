@@ -1,0 +1,45 @@
+<div class="user1-box" style="margin: 13% 0%">
+    <div class="head-section">
+      <h2>Appointment Type</h2>
+      <a routerLink="/appointmentall"><i class="fa fa-times"></i></a>
+    </div>
+    <form class="form-group" #form="ngForm">
+      <div style="margin-bottom: 20px">
+        <div class="field">
+          <input
+            ngModel
+            #appointmentType="ngModel"
+            required
+            minlength="3"
+            [(ngModel)]="aType.appointmentType"
+            pattern="[a-z A-Z 0-9]*"
+            type="text"
+            name="appointmentType"
+            id="appointmentType"
+            placeholder=" "
+            [value]="aType.appointmentType"/>
+          <label for="appointmentType" ><i
+              class="fa fa-id-card-o"
+              style="font-size: 10px; margin-right: 7px" ></i >Appointment Type</label >
+        </div>
+        <div
+          style="margin-top: -16px"
+          class="text-danger"
+          *ngIf="appointmentType.invalid && appointmentType.touched" >
+          <div *ngIf="appointmentType.errors!['required']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i> Appointment Type is required
+          </div>
+        </div>
+      </div>
+
+
+      <div style="padding-top: 10px;margin-top: 25px; display: flex;">
+        <label  style="margin-right: 9px;font-size: 1.1rem;" for="">Status :</label>
+         
+        <mat-slide-toggle [(ngModel)]="aType.status" ngModel name="status"  ></mat-slide-toggle>
+      </div>
+
+
+
+      <button class="btn btn-warning"  (click)="addaTypeProcess()" [disabled]="!form.valid" routerLink="/appointmentall">Submit 
+    </button>

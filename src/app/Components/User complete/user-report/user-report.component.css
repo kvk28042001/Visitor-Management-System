@@ -1,0 +1,31 @@
+.container {
+    width: 60%;
+    margin-top: 15px;
+   
+}
+
+.table-container {
+    max-height: 400px;
+    overflow: scroll;  /* Add a horizontal scrollbar if the table overflows */
+}
+
+.special-table {
+    width: 100%;
+    min-width: 300px; /* Set a minimum width for the table */
+    max-width: 100%; /* Make the table expand to the container's width */
+    /* Add a vertical scrollbar if the content overflows the maximum height */
+    border: 2px solid #a39e9e;
+}
+
+.special-table th, .special-table td {
+    padding: 8px;
+    text-align: left;
+    border: 2px solid #ccc;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+    .special-table {
+        font-size: 14px; /* Decrease font size for smaller screens */
+    }
+}

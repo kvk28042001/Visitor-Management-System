@@ -1,0 +1,240 @@
+<br><br>
+
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Appointment Details
+      </mat-panel-title>
+      <mat-panel-description>
+        <!-- This is a summary of the content -->
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <!-- <p>This is the primary content of the panel.</p> -->
+    <div>
+      <div>
+        
+          <h1> Appointment Details</h1>
+          <hr>
+          <br><br>
+          <label><b>Appointment Start Date : {{ appointment.appointment_start }} </b></label> 
+        <br>
+        <!-- <input type="text" name="appointment_type" placeholder="Appointment Type" size="15" formControlName="appointment_type" [value]="appointment.appointment_start" required (blur)="onTypeblur()"/> -->
+        <br><br><br>
+        <label><b>Appointment End Date : {{ appointment.appointment_end }}</b></label>
+        <br>
+        <!-- <input type="text" name="appointment_type" placeholder="Appointment Type" size="15" formControlName="appointment_type" [value]="appointment.appointment_end" required (blur)="onTypeblur()"/>   -->
+        <br><br>
+    
+        <label><b>Appointment Type : {{ appointment.appointment_type.appointmentType }} </b></label>
+        <br>
+        <!-- <input type="text" name="appointment_type" placeholder="Appointment Type" size="15" formControlName="appointment_type" [value]="appointment.appointment_type" required (blur)="onTypeblur()"/> -->
+        <br>
+        
+        <div class="container" style="width: 65%"
+> 
+                      <h3>Section Visited</h3>
+                      <table>
+                          <thead>
+                              <tr>
+                                  <th>Section Id</th>
+                                  <th>Section Description</th>
+                                  <th></th>
+                                  <th></th>
+                              </tr>
+                          </thead>
+                      <tbody>
+                          <tr *ngFor="let s of appointment.sectionVisitedList">
+                              <td>{{ s.section.section_id }}</td>
+                              <td>{{ s.section.section_description}}</td>
+                              <td><button class="btn-primary" (click)="sectionCheckIn(s.sectionVisited_id)">Section CheckIn</button></td>
+                              <td><button class="btn-primary" (click)="sectionCheckOut(s.sectionVisited_id)">Section CheckOut</button></td>
+                          </tr>
+                      </tbody>
+                      </table>
+
+                      
+         </div>
+
+         <div class="container" style="width: 65%"
+> 
+                      <h3>Facility Visited</h3>
+                      <table>
+                          <thead>
+                              <tr>
+                                  <th>Facility Id</th>
+                                  <th>Facility Description</th>
+                              </tr>
+                          </thead>
+                      <tbody>
+                          <tr *ngFor="let f of appointment.facilityVisitedList">
+                              <td>{{ f.facility.facility_id }}</td>
+                              <td>{{ f.facility.facility_description}}</td>
+                              <td><button class="btn-primary" (click)="facilityCheckIn(f.facilityVisited_id)">Facility CheckIn</button></td>
+                              <td><button class="btn-primary" (click)="facilityCheckOut(f.facilityVisited_id)">Facility CheckOut</button></td>
+                          </tr>
+                      </tbody>
+                      </table>
+                      <div>
+                        
+                        
+                      </div>
+         </div>
+
+         <div class="container" style="width: 65%"
+> 
+                      <!-- <h3>Approver</h3>
+                      <table>
+                          <thead>
+                              <tr>
+                                  <th>User Id</th>
+                                  <th>User Name</th>
+                              </tr>
+                          </thead>
+                      <tbody>
+                          <tr>
+                              <td>{{ appointment.approver.user_id }}</td>
+                              <td>{{ appointment.approver.user_Username}}</td>
+                          </tr>
+                      </tbody>
+                      </table> -->
+         </div>
+         <br>
+         <div>
+          <button class="btn-primary" (click)="checkInUpdate()">Check-in</button>
+          <hr>
+          <button class="btn-primary" (click)="checkOutUpdate()">Check-out</button>
+         </div>
+      </div> 
+        
+
+    </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Visitor Details
+      </mat-panel-title>
+      <mat-panel-description>
+        <!-- {{panelOpenState ? 'open' : 'closed'}} -->
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>I'm visible because I am open</p>
+    <div style="display: flex;" class="responsive-table-container">
+      <table>
+        <thead>
+            <tr>
+                <th>Visitor Id</th>
+                <th>Visitor Name</th>
+                <th>Visitor Number</th>
+                <th>Visitor Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let visitor of appointment.visitors">
+                <td>{{ visitor.visitor_id }}</td>
+                <td>{{ visitor.visitor_name }}</td>
+                <td>{{ visitor.visitor_phone1 }}</td>
+                <td>{{ visitor.visitor_address }}</td>
+            </tr>
+        </tbody>
+      </table>
+      <table>
+        <thead>
+            <tr>
+                <th>Visitor Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let v of visitorImages">
+                <td><img [src]="v" alt=""> </td>
+            </tr>
+        </tbody>
+      </table>
+      <table>
+        <thead>
+            <tr>
+                <th>Visitor Aadhar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let v of visitorIds">
+              <div class="attachment-card">
+                <div class="attachment-preview">
+                  <iframe [src]="v" width="50%" height="200px"></iframe>
+                  <button (click)="downloadPdf(v, 'visitor.pdf')">Download</button>
+                </div>
+              </div>
+            </tr>
+        </tbody>
+      </table>
+
+      
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Vehicle Details
+      </mat-panel-title>
+      <!-- <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description> -->
+    </mat-expansion-panel-header>
+    <!-- <p>I'm visible because I am open</p> -->
+    <div>
+      <table>
+        <thead>
+            <tr>
+                <th>Vehicle Id</th>
+                <th>Vehicle Number</th>
+                <th>Vehicle Type</th>
+                <th>Driver Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let vehicle of appointment.vehicles">
+                <td>{{ vehicle.vehicleId }}</td>
+                <td>{{ vehicle.vehicleNumber }}</td>
+                <td>{{ vehicle.vehicleType }}</td>
+                <td>{{ vehicle.driverName }}</td>
+            </tr>
+        </tbody>
+      </table>
+      <table>
+        <thead>
+            <tr>
+                <th>Driver Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let d of driverImages">
+                <td><img [src]="d" alt=""> </td>
+            </tr>
+        </tbody>
+      </table>
+      <table>
+        <thead>
+            <tr>
+                <th>Driver License</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let d of driverLicense">
+              <div class="attachment-card">
+                <div class="attachment-preview">
+                  <iframe [src]="d" width="50%" height="200px"></iframe>
+                  <button (click)="downloadPdf(d, 'driverLicense.pdf')">Download</button>
+                </div>
+              </div>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>

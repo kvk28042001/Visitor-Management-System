@@ -1,0 +1,417 @@
+
+<div class="container">
+
+  <h1 style="text-align: center;">Fill Appointment Details</h1>
+    <mat-tab-group animationDuration="0ms">
+      <mat-tab label="Appointment">
+        <h3 class="text-center">Appointment Details</h3>
+        <hr>
+      
+        <div class="row">
+          
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-label>Start Date [MM/DD/YYYY]</mat-label>
+              <input matInput [matDatepicker]="picker1" min="{{ currentDate | date:'yyyy-MM-dd' }}" name="appointment_start" [(ngModel)]="appointment.appointment_start">
+              <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          </div>
+      
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-label>End Date [MM/DD/YYYY]</mat-label>
+              <input matInput [matDatepicker]="picker2" min="{{ currentDate | date:'yyyy-MM-dd' }}" name="appointment_end" [(ngModel)]="appointment.appointment_end">
+              <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-label>Appointment Type</mat-label>
+              <mat-select class="form-Group" #selectAppointmentType>
+                <mat-option [value]="a.appointmentTypeId" *ngFor="let a of appointmentTypes" (click)="onAddAppointmentType(selectAppointmentType)">{{a.appointmentType}}</mat-option>
+              </mat-select>
+              
+            </mat-form-field>
+            <!-- <label for="AppointmentType">Appointment Type:</label>
+            <select id="courses" class="form-Group" #selectAppointmentType>
+              <option value="{{a.appointmentTypeId}}" *ngFor="let a of appointmentTypes" (click)="onAddAppointmentType(selectAppointmentType)">{{a.appointmentType}}</option>
+            </select> -->
+            <!-- <button class="btn btn-primary" (click)="onAddAppointmentType(selectAppointmentType)">Add</button> -->
+            <!-- <table>
+              <thead>
+                <tr>
+                  <th>Sl.No</th>
+                  <th>Appointment Type</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ appointment.appointment_type.appointmentTypeId }}</td>
+                  <td>{{ appointment.appointment_type.appointmentType }}</td>
+                  <td><i class="fa fa-trash" (click)="removeAppointmentType(item)"></i></td>
+                </tr>
+              </tbody>
+            </table> -->
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+              <mat-label>Company Name</mat-label>
+              <input matInput [(ngModel)]="appointment.companyName" required>
+            </mat-form-field>
+          </div>
+
+      
+
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+              <mat-label>Place</mat-label>
+              <input matInput [(ngModel)]="appointment.place" required>
+            </mat-form-field>
+          </div>
+      
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+              <mat-label>Company Contact Number  </mat-label>
+              <input matInput [(ngModel)]="appointment.companyPhone" required>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+              <mat-label>OTP</mat-label>
+              <input matInput [(ngModel)]="otp" required>
+            </mat-form-field>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-md-6">
+            <!-- <label for="Section">Sections:</label>
+            <select id="sections" class="form-Group" #selectSection>
+              <option value="{{s.section_id}}" *ngFor="let s of sections" (click)="onAddSection(selectSection)">{{s.section_description}}</option>
+            </select> -->
+            <mat-form-field>
+              <mat-label>Sections </mat-label>
+              <mat-select class="form-Group" #selectAppointmentType #selectSection>
+                <mat-option value="{{s.section_id}}" *ngFor="let s of sections" (click)="onAddSection(selectSection)">{{s.section_description}}</mat-option>
+              </mat-select>
+              
+            </mat-form-field>
+            <!-- <button class="btn btn-primary" (click)="onAddSection(selectSection)">Add</button> -->
+            <table>
+              <thead>
+                <tr>
+                  <th>Sl.No</th>
+                  <th>Section Name</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of sectionVisitedList">
+                  <td>{{ item.section.section_id }}</td>
+                  <td>{{ item.section.section_description }}</td>
+                  <td><i class="fa fa-trash" (click)="removeSection(item)"></i></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-6">
+            <!-- <label for="Facility">Facilities:</label>
+            <select id="courses" class="form-Group" #selectFacility>
+              <option value="{{f.facility_id}}" *ngFor="let f of facilities" (click)="onAddFacility(selectFacility)">{{f.facility_description}}</option>
+            </select> -->
+            <mat-form-field>
+              <mat-label>Facilities </mat-label>
+              <mat-select class="form-Group" #selectAppointmentType #selectFacility>
+                <mat-option value="{{f.facility_id}}" *ngFor="let f of facilities" (click)="onAddFacility(selectFacility)">{{f.facility_description}}</mat-option>
+              </mat-select>
+              
+            </mat-form-field>
+            <!-- <button class="btn btn-primary" (click)="onAddFacility(selectFacility)">Add</button> -->
+            <table>
+              <thead>
+                <tr>
+                  <th>Sl.No</th>
+                  <th>Facility Name</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of facilityVisitedList">
+                  <td>{{ item.facility.facility_id }}</td>
+                  <td>{{ item.facility.facility_description }}</td>
+                  <td><i class="fa fa-trash" (click)="removeFacility(item)"></i></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        
+        </div>
+
+      </mat-tab>
+      
+        <mat-tab label="Visitor">
+             <h3 style="text-align: center;">Visitor Details</h3>
+             <hr>
+
+             
+
+            <label for="numberOfPeople">Number of People:</label>
+            <input type="number" name="numberOfPeople" id="numberOfPeople" placeholder=" " size="15"
+                   [(ngModel)]="numberOfPeople" (ngModelChange)="addPeopleFields()" required/>
+
+
+            
+            <div *ngFor="let visitor of visitorsData; let i = index" class="visitor-group">
+
+              <div>
+                <label for="">Phone :</label>
+                <input type="text" id="" [(ngModel)]="phone" (keyup)="getVisitorDetails()" />
+              </div>
+
+              <h3>Visitor {{ i + 1 }}</h3>
+              <div style="display: flex; justify-content: space-between;">
+                <div>
+                  <label for="name{{ i }}">Name:</label>
+                  <input type="text" id="name{{ i }}" [(ngModel)]="visitor.visitor_name" required/>
+                </div>
+                <div>
+                  <label for="address{{ i }}">Address:</label>
+                  <input type="text" id="address{{ i }}" [(ngModel)]="visitor.visitor_address" required/>
+                </div>
+                <div>
+                  <label for="email{{ i }}">Email:</label>
+                  <input type="email" id="email{{ i }}" [(ngModel)]="visitor.visitor_email" required/>
+                </div>
+                <div>
+                  <label for="phone1{{ i }}">Phone 1:</label>
+                  <input type="text" id="phone1{{ i }}" [(ngModel)]="visitor.visitor_phone1"/>
+                </div>
+                <div>
+                  <label for="phone2{{ i }}">Phone 2:</label>
+                  <input type="text" id="phone2{{ i }}" [(ngModel)]="visitor.visitor_phone2"/>
+                </div>
+              </div>
+
+              <div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Item Name</th>
+                      <th>Item Description</th>
+                      <th>Item Count</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of visitor.items; let j = index">
+                      <td>
+                        <input type="text" [(ngModel)]="visitor.items[j].item_Name" required>
+                      </td>
+                      <td>
+                        <input type="text" [(ngModel)]="visitor.items[j].item_Description" required>
+                      </td>
+                      <td>
+                        <input type="number" [(ngModel)]="visitor.items[j].item_count" required>
+                      </td>
+                      <td>
+                        <i class="fa fa-trash" (click)="removeItem(i, j)"></i>
+                      </td>
+                    </tr>
+                  </tbody> 
+                </table>
+                  <br>
+                <button type="button" (click)="addItem(i)">Add Item</button>
+              </div>
+              <br>
+              <br>
+
+              <h4>Documents :</h4>
+              <div style="display: flex; justify-content: space-between;">
+
+                
+
+                <div>
+
+                  <h4>Visitor Photo:</h4>
+
+                  <div>
+                    <div>
+                      <label>
+                        <input type="radio" name="options" value="option1" [(ngModel)]="selectedOption" (change)="onRadioChange('option1')"> Existing Image
+                      </label>
+                    </div>
+                    
+                    <div>
+                      <label>
+                        <input type="radio" name="options" value="option2" [(ngModel)]="selectedOption" (change)="onRadioChange('option2')"> Capture Image
+                      </label>
+                    </div>
+                  </div>
+
+
+                  
+
+                  <div *ngIf="selectedOption1">
+                    
+                    <form (ngSubmit)="imageUploadVisitor(i)">
+          
+                      
+                      <input type="file" #fileInput (change)="onFileSelected($event)" id="visitorphoto{{ i }}" />
+                      <button type="submit" style="width: auto;">Upload</button>
+                    </form>
+                    <div *ngIf="response">{{ response }}</div>
+  
+                    <div>
+                      <img class="round" [src]="imageSrc" alt="user" />
+                    </div>
+
+                  </div>
+                  
+                  <div *ngIf="selectedOption2">
+                        <webcam
+                        #webcam
+                        [width]="250"
+                        [height]="250"
+                        [trigger]="captureImageSubject.asObservable()"
+                        [allowCameraSwitch]="true"
+                        (imageCapture)="handleImage($event)"
+                      ></webcam>
+                      <canvas id="webcamCanvas" [height]="480" [width]="640"></canvas>
+                      <button (click)="captureImage()">Capture Image</button>
+                      <div *ngIf="webcamImage">
+                        <img [src]="webcamImage.imageAsDataUrl" alt="Captured Image" [height]="imageHeight" [width]="imageWidth">
+                        <button (click)="sendImageToServer(i)">Send to Server</button>
+                      </div>
+                  </div>
+                </div>
+
+
+
+                <div>
+                  <form (ngSubmit)="idUploadVisitor(i)">
+          
+                    <h4>Visitor Id Proof:</h4>
+                    <input type="file" #fileInput (change)="onFileSelected($event)" />
+                    <button type="submit" style="width: auto;">Upload</button>
+                  </form>
+                  <div *ngIf="response">{{ response1 }}</div>
+                  <div class="attachment-preview">
+                    <iframe [src]="visitor_aadhar" width="50%" height="200px"></iframe>
+                    <!-- <button (click)="downloadPdf(visitor_aadhar, 'visitor.pdf')">Download</button> -->
+                  </div>
+                </div>
+              </div>
+              
+             
+              <!-- Add other input fields as needed -->
+            </div>
+        </mat-tab>
+        <mat-tab label="Vehicle">
+             <h3 style="text-align: center;">Vehicle Details</h3>
+             <hr>
+
+            <label for="numberOfVehicles">Number of Vehicles:</label>
+            <input type="number" name="numberOfVehicles" id="numberOfVehicles" placeholder=" " size="15"
+                   [(ngModel)]="numberOfVehicles" (ngModelChange)="addVehicle()" required/>
+
+            <div *ngFor="let vehicle of vehicles; let i = index" class="vehicle-group">
+                <h3>Vehicle {{ i + 1 }}</h3>
+                <div style="display: flex; justify-content: space-between;">
+                  <div>
+                    <label for="vehicleNumber{{ i }}">Vehicle Number:</label>
+                    <input type="text" id="vehicleNumber{{ i }}" [(ngModel)]="vehicle.vehicleNumber" required/>
+                  </div>
+                  <div>
+                    <label for="vehicleType{{ i }}">Vehicle Type:</label>
+                    <input type="text" id="vehicleType{{ i }}" [(ngModel)]="vehicle.vehicleType" required/>
+                  </div>
+                  <!-- <div>
+                    <label for="driverLicense{{ i }}">Driver License:</label>
+                    <input type="text" id="driverLicense{{ i }}" [(ngModel)]="vehicle.driverLicense" required/>
+                  </div> -->
+                  <div>
+                    <label for="driverName{{ i }}">Driver Name:</label>
+                    <input type="text" id="driverName{{ i }}" [(ngModel)]="vehicle.driverName" required/>
+                  </div>
+
+                </div>
+                
+                <!-- <div>
+                  <label for="driverPhoto{{ i }}">Driver Photo:</label>
+                  <input type="text" id="driverPhoto{{ i }}" [(ngModel)]="vehicle.driverPhoto" required/>
+                </div>
+                <div>
+                  <label for="vehicleCopy{{ i }}">Vehicle Copy:</label>
+                  <input type="text" id="vehicleCopy{{ i }}" [(ngModel)]="vehicle.vehicleCopy" required/>
+                </div> -->
+                <h4>Documents :</h4>
+                <div style="display: flex; justify-content: space-between;">
+                  
+                  <br>
+                  <br>
+                  <div>
+                    <form (ngSubmit)="imageUploadDriver(i)">
+            
+                      <h4 >Driver photo:</h4>
+                      <input type="file" #fileInput (change)="onFileSelected($event)" id="vehicleCopy{{ i }}" />
+                      <button type="submit" style="width: auto;">Upload</button>
+                    </form>
+                    <div *ngIf="response">{{ response2 }}</div>
+                    <div>
+                      <img [src]="imageSrc1" alt="">
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <form (ngSubmit)="idUploadDriver(i)">
+            
+                      <h4 >Driver License:</h4>
+                      <input type="file" #fileInput (change)="onFileSelected($event)" id="driverLicense{{ i }}" />
+                      <button type="submit" style="width: auto;">Upload</button>
+                    </form>
+                    <div *ngIf="response">{{ response3 }}</div>
+                    <div class="attachment-preview">
+                      <iframe [src]="driverLicense" width="50%" height="200px"></iframe>
+                      <!-- <button (click)="downloadPdf(driverLicense, 'visitor.pdf')">Download</button> -->
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <form (ngSubmit)="copyUploadVehicle(i)">
+            
+                      <h4 >Vehicle copy:</h4>
+                      <input type="file" #fileInput (change)="onFileSelected($event)" id="vehicleCopy{{ i }}" />
+                      <button type="submit" style="width: auto;">Upload File</button>
+                    </form>
+                    <div *ngIf="response">{{ response4 }}</div>
+                    <div class="attachment-preview">
+                      <iframe [src]="vehicleCopy" width="50%" height="200px"></iframe>
+                      <!-- <button (click)="downloadPdf(vehicleCopy, 'visitor.pdf')">Download</button> -->
+                    </div>
+                </div>
+
+                </div>
+
+                
+
+                <!-- Add other input fields as needed -->
+              </div>
+              
+        </mat-tab>
+        <!-- <mat-tab label="Fourth">Content 4</mat-tab> -->
+      </mat-tab-group>
+
+      
+      
+</div>
+<div class="container">
+  <button type="submit" class="registerbtn" (click)="onSubmit()">Submit</button>
+</div>
+

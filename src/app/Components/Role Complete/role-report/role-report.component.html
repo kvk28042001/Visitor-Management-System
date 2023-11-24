@@ -1,0 +1,21 @@
+<div class="container mb-5">
+    <h3>Role Report</h3>
+    <div class="table-container">
+        <table class="special-table">
+            <thead>
+                <tr>
+                    <th>Role ID</th>
+                    <th>Role Description</th>
+                    <th>Menu  Group</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let r of roles">
+                    <td>{{r.role_id}}</td>
+                    <td>{{r.role_description}}</td>
+                    <td>{{r.menugroup}}</td>
+                 </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

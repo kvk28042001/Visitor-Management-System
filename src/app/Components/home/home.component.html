@@ -1,0 +1,19 @@
+ <div class="container-fluid g-0" style="background: linear-gradient(#fff, #fff); height: 100vh;max-height: auto;">
+    <app-header (sideNavToggled)="sideNavStatus = $event;"></app-header>
+
+    <main >
+        <app-sidenav style="position: fixed;" [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open': sideNavStatus}"></app-sidenav>
+        
+        <div class="display-area p-3" [ngClass]="{'display-area-shrink': sideNavStatus}" style="background: linear-gradient(#d6e7ea, #d6e7ea);height: auto;">
+            <router-outlet></router-outlet> 
+            <div >
+                <app-footer></app-footer>
+            </div>
+        </div>
+    </main>
+
+  
+</div> 
+
+
+

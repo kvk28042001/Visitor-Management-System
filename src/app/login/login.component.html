@@ -1,0 +1,46 @@
+<div class="login">
+  
+  <div class="form-group">
+    <h2>Login Details</h2>
+      <div class="userName"> <br>
+       <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input  matInput placeholder="" [(ngModel)]="login.email" required>
+      </mat-form-field>
+      </div>
+      <br><br>
+    
+     <div class="Password">
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" placeholder="" [(ngModel)]="login.password" required>
+      </mat-form-field>
+    </div>
+    <br>
+    <p style="color: blue;"  (click)="forgotPassword()">Forgot Password?</p>
+    <br><br>
+    <button class="btn btn-primary" (click)="onLogin(login.email,login.password)">Submit</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary"  (click)="openDialog()">Signup</button>
+  </div>
+</div>
+
+
+
+<!--   <mat-dialog-content>
+    <h2>Login Details</h2>
+    <form>
+    
+      <mat-form-field>
+        <input matInput placeholder="Username" required/>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" required/>
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)="onCloseDialog()">Cancel</button>
+    <button mat-button (click)="onLog()">Login</button>
+  </mat-dialog-actions> -->

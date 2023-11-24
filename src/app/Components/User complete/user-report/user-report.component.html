@@ -1,0 +1,29 @@
+<div class="container mb-5">
+    <h3>User Report</h3>
+    <div class="table-container">
+        <table class="special-table">
+            <thead>
+                <tr>
+                    <th>User Id</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Phone No1</th>
+                    <th>Phone No2</th>
+                    <th>Role</th>
+                    <th>Section</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of users">
+                    <td>{{u.user_id }}</td>
+                    <td>{{u.user_Username}}</td>
+                    <td>{{u.user_email}}</td>
+                    <td>{{u.user_phone1 }}</td>
+                    <td>{{u.user_phone2}}</td>
+                    <td>{{u.role}}</td>
+                    <td>{{u.section}}</td>
+                 </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

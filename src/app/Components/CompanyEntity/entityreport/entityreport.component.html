@@ -1,0 +1,21 @@
+<div class="container mb-5">
+    <h3>Entity Report</h3>
+    <div class="table-container">
+        <table class="special-table">
+            <thead>
+                <tr>
+                    <th>Entity Id</th>
+                    <th>Entity Description</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let e of companyEntityReport">
+                    <td>{{e.entity_id}}</td>
+                    <td>{{e.entity_description}}</td>
+                    <td>{{e.status}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<!-- <div
+class="container"
+
+style="width: 65%"
+> 
+<h3>Company Report</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Company ID</th>
+            <th>Name</th>
+            <th>Logopath</th>
+            <th>Address</th>
+            <th>Address 1</th>
+            <th>Address 2</th>
+            <th>Phone No</th>
+            <th>Phone No1</th>
+            <th>Email</th>
+            <th>Website</th>
+        </tr>
+    </thead>
+<tbody>
+    <tr *ngFor="let c of companies">
+        <td>{{c.companyId}}</td>
+        <td>{{c.name}}</td>
+        <td>{{c.logoPath}}</td>
+        <td>{{c.address}}</td>
+        <td>{{c.address1}}</td>
+        <td>{{c.address2}}</td>
+        <td>{{c.phoneNo}}</td>
+        <td>{{c. phoneNo1}}</td>
+        <td>{{c. email}}</td>
+        <td>{{c. website}}</td>
+     </tr>
+</tbody>
+</table>
+ -->
+
+
+<div class="container mb-5">
+    <h3>Company Report</h3>
+    <div class="table-container">
+        <table class="special-table">
+            <thead>
+                <tr>
+                    <th>Company ID</th>
+                    <th>Name</th>
+                    <th>Logopath</th>
+                    <th>Address</th>
+                    <th>Address 1</th>
+                    <th>Address 2</th>
+                    <th>Phone No</th>
+                    <th>Phone No1</th>
+                    <th>Email</th>
+                    <th>Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of companies">
+                    <td>{{c.companyId}}</td>
+                    <td>{{c.name}}</td>
+                    <td>{{c.logoPath}}</td>
+                    <td>{{c.address}}</td>
+                    <td>{{c.address1}}</td>
+                    <td>{{c.address2}}</td>
+                    <td>{{c.phoneNo}}</td>
+                    <td>{{c. phoneNo1}}</td>
+                    <td>{{c. email}}</td>
+                    <td>{{c. website}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+/* footer.component.css */
+
+/* Footer Container */
+footer {
+    background-color: #007BFF;
+    color: #ffffff;
+    padding: 40px 0;
+  }
+  
+  /* Footer Columns */
+  footer .col-md-4 {
+    padding: 0 15px;
+  }
+  
+  /* Footer Links */
+  footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  footer ul li {
+    margin-bottom: 10px;
+  }
+  
+  footer a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Social Icons */
+  .social-icons a {
+    font-size: 24px;
+    margin-right: 20px;
+  }
+  
+  /* Contact Info */
+  footer .contact-info p {
+    margin-bottom: 5px;
+  }
+  
+  /* Designed by */
+  footer .designed-by {
+    margin-top: 20px;
+    font-style: italic;
+  }
+  

@@ -1,0 +1,63 @@
+<div
+  style=" width: 100%;display: flex;justify-content: center; background: linear-gradient(#d6e7ea, #d6e7ea);; height: 100vh; border: 1px solid #d6e7ea">
+  <div class="user1-box" style="margin: 8% 0%;">
+    <div class="head-section">
+      <h2>Appointment Link From Host</h2>
+      <a routerLink="/employeeall"><i class="fa fa-times"></i></a>
+    </div>
+    <form class="form-group" #form="ngForm">
+
+
+
+
+      <div>
+        <div class="field">
+          <input ngModel #receiverMailId="ngModel" required maxlength="100" type="text" name="receiverMailId"
+            [(ngModel)]="host.receiverMailId" id="receiverMailId" required placeholder=" ">
+          <label for="receiverMailId"><i class="fa fa-map-marker" style="font-size: 10px;margin-right: 7px;"></i>Visitor Mail
+          </label>
+        </div>
+        <div style="margin-top: -16px;height: 20px;" class="text-danger" *ngIf="receiverMailId.invalid && receiverMailId.touched">
+          <div *ngIf="receiverMailId.errors!['required']"><i style="margin-right: 5px;"
+              class="fa fa-exclamation-triangle"></i> Employee is required</div>
+          <div *ngIf="receiverMailId.errors!['maxlength']"><i style="margin-right: 5px;"
+              class="fa fa-exclamation-triangle"></i>It Should be less than 100 character</div>
+        </div>
+      </div>
+
+
+      
+      
+      
+
+
+      <div class="input-selectbox" ngModelGroup="employee" style="margin-top: 25px;">
+        <div class="select-container" style="display: flex;justify-content: space-between;">
+          <label style="margin-right: 20px;font-size: 1.1rem;margin-top: 0.5%;" for="">Employee :</label>
+          <select #selemployee class="form-select" ngModel name="employeeId" style="width: 68.4%;" (click)="onEmployeeSelectionChange(selemployee.value)">
+            <option selected disabled>Select Employee</option>
+            <option *ngFor="let employee of employees" [value]="employee.employeeId"
+              >{{ employee.employeeName }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+
+      
+
+      
+
+
+
+
+
+      <button class="btn btn-warning" (click)="addHost()" [disabled]="!form.valid">Submit
+      </button>
+
+
+
+
+    </form>
+  </div>
+</div>

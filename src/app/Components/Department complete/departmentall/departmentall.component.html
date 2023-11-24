@@ -1,0 +1,36 @@
+<!-- <div class="row main-container">
+  <div class="col-md-3"></div> 
+
+  <div class="col-md-6">
+    <h3>Department</h3>
+    <button class="btn" routerLink="/departmentform">Add </button>
+    <ag-grid-angular
+    class="ag-theme-alpine grid-container"
+    [rowData]="rowData$ | async"
+    [columnDefs]="colDefs"
+    [rowSelection]="'multiple'"
+    [animateRows]="true"
+    
+  ></ag-grid-angular>
+  </div>
+
+  <div class="col-md-3"></div>
+</div> -->
+
+<div class="row main-container">
+  <div class="container">
+    <h3>Department</h3>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Add Department">
+      <a routerLink="/departmentForm">
+        <i class="fa fa-plus-square" aria-hidden="true"></i>
+      </a>
+    </button> 
+  </div>
+  <ag-grid-angular
+    class="ag-theme-alpine grid-container"
+    [rowData]="rowData$ | async"
+    [columnDefs]="colDefs"
+    [rowSelection]="'multiple'"
+    [animateRows]="true"
+  ></ag-grid-angular>
+</div>

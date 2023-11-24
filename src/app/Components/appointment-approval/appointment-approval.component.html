@@ -1,0 +1,43 @@
+
+<div class="container mb-5">
+  <h3>Appointments List For Approval Pending</h3>
+  <div class="table-container">
+      
+  <mat-form-field>
+    <mat-label>Host</mat-label>
+    <mat-select class="form-Group" #selectHost>
+      <mat-option [value]="h.hostId" *ngFor="let h of hosts" (click)="onHostSelectionChange(selectHost)">{{h.employee.employeeName}}</mat-option>
+    </mat-select>
+    
+  </mat-form-field>
+
+  <table class="special-table">
+    <thead>
+      <tr>
+        <th>Sl.No</th>
+        <th>Appointment Start</th>
+        <th>Appointment End</th>
+        <th>Company Name</th>
+        <th>Place</th>
+        <th>Approve</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of appointments">
+        <td>{{ a.appointment_id }}</td>
+        <td>{{ a.appointment_start }}</td>
+        <td>{{ a.appointment_end }}</td>
+        <td>{{ a.companyName }} </td>
+        <td>{{ a.place }} </td>
+        <td><mat-slide-toggle (click)="confirmAction(a.appointment_id)"></mat-slide-toggle></td>
+      </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+
+  
+  
+</div>
+

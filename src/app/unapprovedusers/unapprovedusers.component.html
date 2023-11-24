@@ -1,0 +1,23 @@
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Approve(Yes/No)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.user_id }}</td>
+              <td>{{ user.user_Username }}</td>
+              <td>{{ user.user_email}} </td>
+              <td>{{ user.user_phone1}} </td>
+              <td><button class="btn btn-primary" (click)="approveUser(user.user_id)">Approve</button> </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

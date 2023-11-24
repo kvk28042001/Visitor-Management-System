@@ -1,0 +1,123 @@
+<div>
+    <div>
+      <label for="year">Select Year:</label>
+      <select id="year" class="form-Group" #selectYear>
+        <option value="{{year}}" *ngFor="let year of years">{{year}}</option>
+      </select>
+      &nbsp;
+      <button class="btn btn-primary" (click)="getYearlyAppointments(selectYear.value)">Select Year</button>
+      <br>
+      <br>
+      <label for="month">Select Month:</label>
+      <select id="month" class="form-Group" #selectMonth>
+        <option value="{{month}}" *ngFor="let month of months">{{month}}</option>
+      </select>
+      <button class="btn btn-primary" (click)="getMonthlyAppointments(selectYear.value,selectMonth.value)">Select Year and Month</button>
+      &nbsp;
+    </div>
+    <div>
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate" [(ngModel)]="startDate" name="startDate" required>
+
+      &nbsp;&nbsp;
+      <label for="endDate">End Date:</label>
+      <input type="date" id="endDate" [(ngModel)]="endDate" name="endDate" required>
+
+      &nbsp;&nbsp;
+      <button class="btn btn-primary" (click)="getAppointmentsWithinRanges()">View Appointments</button>
+    </div>
+    <div id="pdfContent">
+      <h1 style="text-align: center;"> {{companyName}} </h1>
+      <br>
+      <h2 style="text-align: center;"> {{companyAddress}} </h2>
+      <br>
+      <h2 style="text-align: center;">Appointments and Visitors Reports</h2>
+      <br>
+      &nbsp;&nbsp;<p *ngIf="year1">Year : {{year1}} </p>
+      <br>
+      &nbsp;&nbsp;<p *ngIf="month&&year2">Year : {{year2}} </p> &nbsp;&nbsp; <p *ngIf="month&&year2">Month : {{month}} </p>
+      <!-- Display visitors below each appointment -->
+      <div class="appointment-box" *ngFor="let appointment of appointments">
+        <!-- <table>
+          <thead>
+            <tr>
+              <th>Appointment ID</th>
+              <th>Appointment Start</th>
+              <th>Appointment End</th>
+              <th>Appointment Type</th>
+               Add other appointment-related headers as needed 
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ appointment.appointment_id }}</td>
+              <td>{{ appointment.appointment_start | date:'short' }}</td>
+              <td>{{ appointment.appointment_end | date:'short' }}</td>
+              <td>{{ appointment.appointment_type.appointmentType }}</td>
+               Display other appointment-related data as needed 
+            </tr>
+          </tbody>
+        </table> -->
+        <div style="display: flex; justify-content: space-between;">
+            <p>Appointment Id : {{ appointment.appointment_id }} </p>
+            <p>Appointment Type : {{ appointment.appointment_type.appointmentType }} </p>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+             <p>Appointment Start : {{ appointment.appointment_start | date:'short' }} </p>
+             <p>Appointment End : {{ appointment.appointment_end | date:'short' }} </p>
+        </div>
+        <!-- <h3>Visitors for Appointment ID: {{ appointment.appointment_id }}</h3> -->
+        <table>
+          <thead>
+            <tr>
+              <th>Visitor ID</th>
+              <th>Visitor Name</th>
+              <th>Visitor Phone</th>
+              <th>Visitor Address</th>
+              <!-- <th>Visitor Photo</th> -->
+              <!-- Add other visitor-related headers as needed -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let visitor of appointment.visitors">
+              <td>{{ visitor.visitor_id }}</td>
+              <td>{{ visitor.visitor_name }}</td>
+              <td>{{ visitor.visitor_phone1 }}</td>
+              <td>{{ visitor.visitor_address }}</td>
+              <!-- <td><img *ngIf="this.visitorImages[i]" [src]="this.visitorImages[i]" alt="Visitor Photo"></td> -->
+              <!-- Display other visitor-related data as needed -->
+            </tr>
+          </tbody>
+        </table>
+  
+        <!-- Display items below each visitor -->
+        <div *ngFor="let visitor of appointment.visitors">
+          <!-- <h4>Items for Visitor ID: {{ visitor.visitor_id }}</h4> -->
+          <table>
+            <thead>
+              <tr>
+                <th>Item ID</th>
+                <th>Item Name</th>
+                <th>Item Description</th>
+                <th>Item Count</th>
+                <!-- Add other item-related headers as needed -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of visitor.items">
+                <td>{{ item.item_id }}</td>
+                <td>{{ item.item_Name }}</td>
+                <td>{{ item.item_Description }}</td>
+                <td>{{ item.item_count }} </td>
+                <!-- Display other item-related data as needed -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+      <button class="btn btn-primary" (click)="downloadPDF()">Download PDF</button>
+  </div>

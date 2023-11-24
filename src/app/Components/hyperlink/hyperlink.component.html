@@ -1,0 +1,187 @@
+<!-- <div class="container" style="margin-top: 2%;">
+  <div class="row card-row">
+    <div class="col-md-3">
+      <div class="card card-clickable" (click)="toggleCompanyReport()">
+        <div class="card-body" >
+          <div class="subcard flex">
+            <div class="para">
+              <p>Company Report</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-clickable" (click)="toggleDepartmentReport()">
+        <div class="card-body">
+          <div class="subcard flex">
+            <div class="para">
+              <p>Department Report</p>
+            </div>
+            <i class="fa fa-money-bill"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-clickable" (click)="toggleDesignationReport()">
+        <div class="card-body">
+          <div class="subcard flex">
+            <div class="para">
+              <p>Designation Report</p>
+            </div>
+            <i class="fa fa-calendar-check"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-clickable" (click)="toggleEmployeeReport()">
+        <div class="card-body">
+          <div class="subcard flex">
+            <div class="para">
+              <p>Employee Report</p>
+            </div>
+            <i class="fas fa-cart-shopping"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-clickable" (click)="toggleEntityReport()">
+        <div class="card-body">
+          <div class="subcard flex">
+            <div class="para">
+              <p>Entity Report</p>
+            </div>
+            <i class="fas fa-cart-shopping"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-clickable" (click)="toggleMenuReport()">
+        <div class="card-body">
+          <div class="subcard flex">
+            <div class="para">
+              <p>Menu Report</p>
+            </div>
+            <i class="fas fa-cart-shopping"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-clickable" (click)="toggleRoleReport()">
+        <div class="card-body">
+          <div class="subcard flex">
+            <div class="para">
+              <p>Role Report</p>
+            </div>
+            <i class="fas fa-cart-shopping"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-clickable" (click)="toggleSectionReport()">
+        <div class="card-body">
+          <div class="subcard flex">
+            <div class="para">
+              <p>Section Report</p>
+            </div>
+            <i class="fas fa-cart-shopping"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-clickable" (click)="toggleUserReport()">
+        <div class="card-body">
+          <div class="subcard flex">
+            <div class="para">
+              <p>User Report</p>
+            </div>
+            <i class="fas fa-cart-shopping"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+
+  <div *ngIf="showCompanyReport">
+    <app-companyreport></app-companyreport>
+  </div>
+  <div *ngIf="showDepartmentReport">
+    <app-departmentreport></app-departmentreport>
+  </div>
+  <div *ngIf="showDesignationReport">
+    <app-designation-report></app-designation-report>
+  </div>
+  <div *ngIf="showEmployeeReport">
+    <app-employeereport></app-employeereport>
+  </div>
+  <div *ngIf="showMenuReport">
+    <app-menureport></app-menureport>
+  </div>
+  <div *ngIf="showRoleReport">
+    <app-role-report></app-role-report>
+  </div>
+  <div *ngIf="showEntityReport">
+    <app-entityreport></app-entityreport>
+  </div>
+  <div *ngIf="showUserReport">
+    <app-user-report></app-user-report>
+  </div>
+  <div *ngIf="showSectionReport">
+    <app-section-report></app-section-report>
+  </div>
+
+</div> -->
+
+
+
+
+
+
+
+
+
+<!-- Dropdown -->
+<div class="container">
+    <h3 style="margin-top: 6%;">Select Reports : </h3>
+<div style="margin-top: -4%;margin-left: 16%;">
+  <mat-form-field>
+    <!-- <mat-label>Select a Report</mat-label> -->
+    <mat-select [(ngModel)]="selectedReport">
+      <mat-option *ngFor="let report of reports" [value]="report.value">{{ report.label }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="selectedReport === 'company'">
+    <app-companyreport></app-companyreport>
+  </div>
+  <div *ngIf="selectedReport === 'department'">
+    <app-departmentreport></app-departmentreport>
+  </div>
+  <div *ngIf="selectedReport === 'designation'">
+    <app-designation-report></app-designation-report>
+  </div>
+  <div *ngIf="selectedReport === 'employee'">
+    <app-employeereport></app-employeereport>
+  </div>
+  <div *ngIf="selectedReport === 'entity'">
+    <app-entityreport></app-entityreport>
+  </div>
+  <div *ngIf="selectedReport === 'menu'">
+   <app-menureport></app-menureport>
+  </div>
+  <div *ngIf="selectedReport === 'role'">
+    <app-role-report></app-role-report>
+  </div>
+  <div *ngIf="selectedReport === 'user'">
+    <app-user-report></app-user-report>
+  </div>
+</div>
+</div>

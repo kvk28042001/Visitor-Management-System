@@ -1,0 +1,135 @@
+<div
+  style="
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(#d6e7ea, #d6e7ea);
+    height: 100vh;
+    border: 1px solid #d6e7ea;
+  "
+>
+  <div class="user1-box" style="margin: 12% 0%">
+    <div class="head-section">
+      <h2>Department Form</h2>
+      <a  routerLink="/departmentall"><i class="fa fa-times"></i></a>
+    </div>
+    <form class="example-form" #form="ngForm">
+      <div style="margin-bottom: 20px" class="form-group">
+        <div class="field">
+          <input
+            ngModel
+            #departmentName="ngModel"
+            required
+            minlength="3"
+            pattern="[a-z A-Z ]*"
+            type="text"
+            name="departmentName"
+            [(ngModel)]="department.department_description"
+            id="departmentName"
+            placeholder=" "
+            [value]="depart.department_description"
+          />
+          <label for="departmentName"
+            ><i
+              class="fa fa-id-card-o"
+              style="font-size: 10px; margin-right: 7px"
+            ></i
+            >Department Name</label
+          >
+        </div>
+        <div class="field">
+            <input
+              ngModel
+              #departmentName="ngModel"
+              required
+              minlength="3"
+              pattern="[a-z A-Z ]*"
+              type="text"
+              name="Entity_Name"
+              id="Entity_Name"
+              placeholder=" "
+              [value]="depart.entity.entity_description"
+            />
+            <label for="Entity_Name"
+              ><i
+                class="fa fa-id-card-o"
+                style="font-size: 10px; margin-right: 7px"
+              ></i
+              >Entity_Name</label
+            >
+          </div>
+        <div
+          style="margin-top: -16px"
+          class="text-danger"
+          *ngIf="departmentName.invalid && departmentName.touched"
+        >
+          <div *ngIf="departmentName.errors!['required']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i
+            >Department Name is required
+          </div>
+          <div *ngIf="departmentName.errors!['minlength']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i>
+            It should be Minimum 6 character
+          </div>
+          <div *ngIf="departmentName.errors!['pattern']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i>
+            It should not be special character
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="input-selectbox"
+        ngModelGroup="companyEntity"
+        style="margin-top: 25px"
+      >
+        <div class="select-container form-group" style="display: flex">
+          <label
+            style="margin-right: 20px; font-size: 1.1rem; margin-top: 0.5%"
+            for=""
+            >Entity :</label
+          >
+          <select
+            ngModel
+            name="entityId"
+            class="form-control"
+            style="width: 80%"
+            aria-label="Default select example"
+          >
+            <option selected >Select Entity</option>
+            <option (click)="onAdd(entity.entity_id)"
+              *ngFor="let entity of entities"
+              [value]="entity.entityId"
+            >
+              {{ entity.entity_description }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div
+        style="padding-top: 10px; margin-top: 25px; display: flex"
+        class="form-group"
+      >
+        <label style="margin-right: 9px; font-size: 1.1rem" for=""
+          >Status :</label
+        >
+
+        <mat-slide-toggle
+          [(ngModel)]="department.status"
+          ngModel
+          name="status"
+        ></mat-slide-toggle>
+      </div>
+
+      <button
+        class="Submit"
+        onclick="alert('successfully')"
+        (click)="updateCompanyProcess()"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+

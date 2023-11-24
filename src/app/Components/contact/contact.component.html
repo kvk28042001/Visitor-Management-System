@@ -1,0 +1,48 @@
+<div class="container">
+<div>
+  
+  <h1 class="text-primary">CONTACT US</h1>
+  <P class="subhead">Get in touch with us today to discuss your software development and maintenance needs. Let's work
+    together to innovate for tomorrow and drive your business towards success</P>
+
+</div>
+  <div class="form">
+    <div class="name">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="" [(ngModel)]="contact.name" required>
+        <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <br><br>
+
+
+
+    <div class="email">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="VM@example.com" [(ngModel)]="contact.email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <br><br>
+
+
+
+    <div class="phone">
+      <mat-form-field>
+        <mat-label>Phone Number</mat-label>
+        <input matInput placeholder="" [(ngModel)]="contact.phone" required>
+        <mat-error *ngIf="phone.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <br>
+
+
+
+    <button class="btn btn-primary" (click)="addContact()">Submit</button>
+
+
+  </div>
+
+</div>

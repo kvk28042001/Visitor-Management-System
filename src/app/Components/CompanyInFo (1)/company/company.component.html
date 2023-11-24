@@ -1,0 +1,400 @@
+<div
+  style="
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(#d6e7ea, #d6e7ea);
+    height: auto;
+    border: 1px solid #d6e7ea;
+  "
+>
+  <div class="user1-box" style="margin: 5% 0%">
+    <div class="head-section">
+      <h2>Company</h2>
+      <a routerLink="/companyall"><i class="fa fa-times"></i></a>
+    </div>
+    <form class="form-group" #form="ngForm">
+
+      
+
+      <div>
+        <div class="field">
+          <input
+            ngModel
+            #name="ngModel"
+            required
+            minlength="3"
+            pattern="[a-z A-Z 0-9]*"
+            type="text"
+            name="name"
+            [(ngModel)]="company.name"
+            id="name"
+            placeholder=" "
+            [value]="company.name"
+          />
+          <label for="name"
+            ><i
+              class="fa fa-id-card-o"
+              style="font-size: 10px; margin-right: 7px"
+            ></i
+            >Company Name
+          </label>
+        </div>
+        <div
+          style="margin-top: -16px"
+          class="text-danger"
+          *ngIf="name.invalid && name.touched"
+        >
+          <div *ngIf="name.errors!['required']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i
+            >Comapny Name is required
+          </div>
+          <div *ngIf="name.errors!['minlength']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i>
+            It should be Minimum 3 character
+          </div>
+          <div *ngIf="name.errors!['pattern']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i>
+            It should not be special character
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="input-box">
+          <label for="logoPath" style="font-size: 15px"
+            ><i style="margin-right: 5px" class="fa fa-gg-circle"></i>Company
+            Logo</label
+          >
+          <div>
+            <div>
+              <img [src]="url" *ngIf="url" style="width: 40%; height: 10%" />
+            </div>
+            <p>
+              <input
+                type="file"
+                name="logoPath"
+                [(ngModel)]="company.logoimage"
+                style="font-size: 15px; width: 100%"
+                (change)="selectFile($event)"
+              />
+            </p>
+            <div *ngIf="msg" class="text-danger" style="margin-top: -16px">
+              <i
+                style="margin-right: 5px"
+                class="fa fa-exclamation-triangle"
+              ></i
+              >Only images are supported
+            </div>
+          </div>
+        </div>
+        <div class="container row">
+          <div class="col-md-12">
+              <div *ngIf=message>{{message}}</div>
+          </div>
+      </div>
+
+        <!-- <div class="field" > -->
+        <!-- <div style="display: flex ;" >
+                <input  ngModel #logo="ngModel" 
+                        disabled style="width: 55%;"
+                        type="text" 
+                        name="logo" 
+                        id ="logo" required placeholder=" ">
+                        <div class ="input-box">
+                          <span class="details">Asset-Typete</span>
+                          <div>
+                              <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+                              <div><img [src]="url" *ngIf="url" style="width:50%;"></div>
+                              <p>
+                                  <input type="file" (change)="selectFile($event)">
+                              </p>
+                          </div>
+              
+                      </div>
+                </div>     
+          <label for ="logo" ><i style="margin-right: 5px;" class="fa fa-exclamation-triangle" ></i>Company Logo </label>
+        </div>
+        <div style="margin-top: -16px;" class="text-danger" *ngIf="logo.invalid && logo.touched">
+          <div *ngIf="logo.errors!['required']"> company Logo is required</div>
+         </div> -->
+      </div>
+
+      <div>
+        <div class="field">
+          <input
+            ngModel
+            #address="ngModel"
+            required
+            maxlength="100"
+            type="text"
+            name="address"
+            [(ngModel)]="company.address"
+            id="address"
+            required
+            placeholder=" No/Building name/ Block"
+            [value]="company.address"
+          />
+          <label for="address"
+            ><i
+              class="fa fa-map-marker"
+              style="font-size: 10px; margin-right: 7px"
+            ></i
+            >Address 1
+          </label>
+        </div>
+        <div
+          style="margin-top: -16px"
+          class="text-danger"
+          *ngIf="address.invalid && address.touched"
+        >
+          <div *ngIf="address.errors!['required']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i
+            >Address is required
+          </div>
+          <div *ngIf="address.errors!['maxlength']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i
+            >It Should be less than 100 character
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="field">
+          <input
+            ngModel
+            #address1="ngModel"
+            required
+            maxlength="100"
+            type="text"
+            name="address1"
+            [(ngModel)]="company.address1"
+            id="address1"
+            required
+            placeholder=" Street/Area/Location"
+            [value]="company.address1"
+          />
+          <label for="address1"
+            ><i
+              class="fa fa-map-marker"
+              style="font-size: 10px; margin-right: 7px"
+            ></i
+            >Address 2</label
+          >
+        </div>
+        <div
+          style="margin-top: -16px; height: 20px"
+          class="text-danger"
+          *ngIf="address1.invalid && address1.touched"
+        >
+          <div *ngIf="address1.errors!['required']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i>
+            Address1 is required
+          </div>
+          <div *ngIf="address1.errors!['maxlength']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i
+            >It Should be less than 100 character
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="field">
+          <input
+            ngModel
+            #address2="ngModel"
+            required
+            maxlength="100"
+            type="text"
+            name="address2"
+            [(ngModel)]="company.address2"
+            id="address2"
+            required
+            placeholder=" City/State/Country/Pincode"
+            [value]="company.address2"
+          />
+          <label for="address2"
+            ><i
+              class="fa fa-map-marker"
+              style="font-size: 10px; margin-right: 7px"
+            ></i
+            >Address 3</label
+          >
+        </div>
+        <div
+          style="margin-top: -16px"
+          class="text-danger"
+          *ngIf="address2.invalid && address2.touched"
+        >
+          <div *ngIf="address2.errors!['required']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i>
+            Address2 is required
+          </div>
+          <div *ngIf="address2.errors!['maxlength']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i
+            >It Should be less than 100 character
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="field">
+          <input
+            ngModel
+            #phoneNo="ngModel"
+            required
+            pattern="[0-9]{10}"
+            type="tel"
+            name="phoneNo"
+            [(ngModel)]="company.phoneNo"
+            id="phoneNo"
+            required
+            placeholder=" "
+            [value]="company.phoneNo"
+          />
+          <label for="phoneNo"
+            ><i
+              class="fa fa-phone"
+              style="font-size: 10px; margin-right: 7px"
+            ></i
+            >Phone Number 1</label
+          >
+        </div>
+        <div
+          style="margin-top: -16px"
+          class="text-danger"
+          *ngIf="phoneNo.invalid && phoneNo.touched"
+        >
+          <div *ngIf="phoneNo.errors!['required']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i>
+            Phone No is required
+          </div>
+          <div *ngIf="phoneNo.errors!['pattern']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i
+            >Phone No is invalid
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="field">
+          <input
+            ngModel
+            #phoneNo1="ngModel"
+            required
+            pattern="[0-9]{10}"
+            type="tel"
+            name="phoneNo1"
+            [(ngModel)]="company.phoneNo1"
+            id="phoneNo1"
+            required
+            placeholder=" "
+            [value]="company.phoneNo1"
+          />
+          <label for="phoneNo1"
+            ><i
+              class="fa fa-phone"
+              style="font-size: 10px; margin-right: 7px"
+            ></i
+            >Phone Number 2</label
+          >
+        </div>
+        <div
+          style="margin-top: -16px"
+          class="text-danger"
+          *ngIf="phoneNo1.invalid && phoneNo1.touched"
+        >
+          <div *ngIf="phoneNo1.errors!['required']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i>
+            phone No1 is required
+          </div>
+          <div *ngIf="phoneNo1.errors!['pattern']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i
+            >Phone No1 is invalid
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="field">
+          <input
+            ngModel
+            #email="ngModel"
+            required
+            pattern="[A-Za-z0-9_.]*@[a-z]*[.]com"
+            type="email"
+            name="email"
+            [(ngModel)]="company.email"
+            id="email"
+            required
+            placeholder=" "
+            [value]="company.email"
+          />
+          <label for="email"
+            ><i
+              class="fa fa-envelope"
+              style="font-size: 10px; margin-right: 7px"
+            ></i
+            >Email
+          </label>
+        </div>
+        <div
+          style="margin-top: -16px"
+          class="text-danger"
+          *ngIf="email.invalid && email.touched"
+        >
+          <div *ngIf="email.errors!['required']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i>
+            Email is required
+          </div>
+          <div *ngIf="email.errors!['pattern']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i
+            >Email is invalid
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="field">
+          <input
+            ngModel
+            #website="ngModel"
+            required
+            maxlength="100"
+            type="text"
+            name="website"
+            [(ngModel)]="company.website"
+            id="website"
+            required
+            placeholder=" "
+            [value]="company.website"
+          />
+          <label for="website"
+            ><i
+              class="fa fa-globe"
+              style="font-size: 10px; margin-right: 7px"
+            ></i
+            >Website</label
+          >
+        </div>
+        <div
+          style="margin-top: -16px"
+          class="text-danger"
+          *ngIf="website.invalid && website.touched"
+        >
+          <div *ngIf="website.errors!['required']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i>
+            Website is required
+          </div>
+          <div *ngIf="website.errors!['maxlength']">
+            <i style="margin-right: 5px" class="fa fa-exclamation-triangle"></i
+            >It Should be less than 100 character
+          </div>
+        </div>
+      </div>
+      <a ></a>
+
+      <button class="btn btn-warning"  (click)="updateCompanyProcess(company.companyId)" value="upload" [disabled]="!form.valid" routerLink="/companyall" >Submit</button>
+    </form>
+  </div>
+</div>

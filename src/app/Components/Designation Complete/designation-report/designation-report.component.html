@@ -1,0 +1,20 @@
+<div class="container mb-5">
+    <h3>Designation Report</h3>
+    <div class="table-container">
+        <table class="special-table">
+            <thead>
+                <tr>
+                    <tr>
+                        <th>Department ID</th>
+                        <th>Designation</th>
+                    </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let d of designations">
+                    <td>{{d.designationId }}</td>
+                    <td>{{d.designation}}</td>
+                 </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

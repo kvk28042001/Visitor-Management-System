@@ -1,0 +1,66 @@
+<!-- <div
+    (mouseover)="onImageHover($event)"
+    (mouseleave)="viewCard=true"
+    class="img" [style.background-image]="'url(../../assets/' + profile.image+ '.jpg)'">
+</div>
+<div 
+    [style.left] = "left"
+    class="card" 
+    style="width: 18rem;" 
+    [hidden]="viewCard">
+    <img class="card-img-top" [src]="'../../assets/'+profile.image+'.jpg'" width="100" height="100">
+    <div class="card-body">
+      <h1 class="card-title">Name : {{profile.name}}</h1>
+      <h3>Name : {{profile.name}}</h3>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div> -->
+
+<!-- <div
+    (mouseover)="onImageHover($event)"
+    (mouseleave)="viewCard=true"
+    class="img" [style.background-image]="'url(../../assets/images/' + profiles.imageUrl+ '.jpg)'">
+</div>
+<div 
+    [style.left] = "left"
+    class="card" 
+    style="width: 18rem;" 
+    [hidden]="viewCard"> -->
+    <!-- <img class="card-img-top" [src]="'../../assets/'+profile.image+'.jpg'" width="100" height="100"> -->
+    <!-- <div class="card-body"> -->
+      <!-- <h1 class="card-title">Name : {{profile.name}}</h1> -->
+      <!-- <h3>Name : {{profiles.Name}}</h3>
+      <p>ID : {{profiles.Id}}</p>
+      <p>Phone contact : {{profiles.contact}}</p>
+      <p>Alternate contact : {{profiles.contact1}}</p>
+      <p>E-mail : {{profiles.email}}</p> -->
+      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    <!-- </div>
+</div> -->
+
+<div
+    (mouseover)="onImageHover($event)"
+    (mouseleave)="viewCard=true"
+    class="img" [ngStyle]="{ 'background-image': 'url(' + imageSrc + ')' }">
+</div>
+<div 
+    [style.left] = "left"
+    class="card" 
+    style="width: 18rem;"
+    [hidden]="viewCard">
+    <img class="card-img-top" [src]="imageSrc" width="100" height="100">
+    <div class="card-body">
+      <!-- <h1 class="card-title">Name : {{profile.name}}</h1> -->
+      <h3>Name : {{visitors.visitor_name}}</h3>
+      <p>ID : {{visitors.visitor_id}}</p>
+      <p>Phone contact : {{visitors.visitor_phone1}}</p>
+      <p>Alternate contact : {{visitors.visitor_phone2}}</p>
+      <p>E-mail : {{visitors.visitor_email}}</p>
+      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    </div>
+</div>
+
+
+
+

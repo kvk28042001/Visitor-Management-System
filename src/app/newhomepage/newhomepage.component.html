@@ -1,0 +1,79 @@
+ <div class="container-fluid g-0" style="background: linear-gradient(#fff, #fff); height: 100vh;max-height: auto;">
+    <!-- <app-header></app-header> -->
+    <nav style="height: 35px;width: 100%;background-color: rgb(138, 135, 135);">
+
+        <div class="topnav">
+            <h5>AJ Enterprise Solutions - Hubli</h5>
+        </div>
+    </nav>
+    
+    <nav class="navbar navbar-expand navbar-dark bg-primary px-2">
+        
+        <div class="side-nav-button p-2 me-3 text-light" (click)="SideNavToggle()" *ngIf="receivedData">
+            <i class="fa fa-bars"></i>
+        </div>
+        
+        <a class="navbar-brand px-4">Visitor Management System</a>
+    
+        <div class="navbar-collapse">
+    
+            <ul class="navbar-nav me-auto" >
+    
+                <li class="nav-item "><a class="nav-link " routerLink="/home"> Home</a></li>
+    
+                <!-- <li class="nav-item "><a class="nav-link " routerLink=""> About Us</a></li> -->
+    
+                <li class="nav-item "><a class="nav-link " routerLink="/contact"> Contact Us</a></li>
+    
+               
+            </ul>
+    
+        </div>
+    <div>
+        <button class="nav-item "
+             class="btn"  (click)="openLoginDialog()" >
+            <i class="fa fa-user" aria-hidden="true" ></i> Login   
+        </button>
+    </div>
+    
+    
+        <!-- <div *ngIf="receivedData">
+            <button>
+                <i class="fa fa-user-circle" aria-hidden="true"  (click)="openActiveDialog()"></i>
+            </button>
+        </div> -->
+        <!-- <div class="profile-menu-container" *ngIf="receivedData">
+          <div class="user-avatar" [title]="user.user_email">{{ user.user_email.charAt(0).toUpperCase() }}</div>
+    
+        </div>
+        <div *ngIf="receivedData">
+            <button mat-button [matMenuTriggerFor]="aboveMenu" class="btn" style="width: 100%; height: 20%;"> <i class="fa fa-cogs" aria-hidden="true"></i></button>
+            <mat-menu #aboveMenu="matMenu" yPosition="above">
+            <p>{{ user.user_email }}</p>    
+            <button mat-menu-item (click)="openEditDialog()">Edit Profile</button>
+            <button mat-menu-item (click)="onLogout()">Logout</button>
+            </mat-menu>
+        </div> -->
+     
+    </nav>
+    
+    
+    
+    
+
+    <main >
+        <app-sidenav style="position: fixed;"></app-sidenav>
+        
+        <div class="display-area p-3"  style="background: linear-gradient(#d6e7ea, #d6e7ea);height: auto;">
+            <router-outlet></router-outlet> 
+            <div >
+                <app-footer></app-footer>
+            </div>
+        </div>
+    </main>
+
+  
+</div> 
+
+
+

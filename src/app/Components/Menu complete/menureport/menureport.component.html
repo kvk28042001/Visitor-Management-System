@@ -1,0 +1,21 @@
+<div class="container mb-5">
+    <h3>Menu Report</h3>
+    <div class="table-container">
+        <table class="special-table">
+            <thead>
+                <tr>
+                    <th>Menu ID</th>
+                    <th>Menu Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let m of menus">
+                    <td>{{m.menu_id }}</td>
+                    <td>{{m.menu_name}}</td>
+                    <td>{{m.menu_description}}</td>
+                 </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
