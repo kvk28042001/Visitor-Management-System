@@ -20,7 +20,7 @@ export class AppointmentComponent {
     {field:'appointment_end',sortable:true,filter:true,editable:true},
     {field:'appointment_type.appointmentType',sortable:true,filter:true,editable:true}
   ];
-
+        
   // httpService: any;
   @ViewChild(AgGridAngular) agGrid! : AgGridAngular;
 
